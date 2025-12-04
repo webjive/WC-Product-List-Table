@@ -5,6 +5,34 @@ All notable changes to WC Product List Table will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2025-12-04
+
+### Added
+- **Automatic GitHub Updates**: Built-in update checker that monitors GitHub releases
+  - Automatic detection of new versions from GitHub repository
+  - One-click updates directly from WordPress admin dashboard
+  - Shows update notifications in WordPress Updates screen
+  - Displays changelog from GitHub release notes
+  - No additional plugins required - works out of the box
+- **GitHub Updater Class**: New `WCPLT_GitHub_Updater` class for managing updates
+  - Checks GitHub API for latest releases
+  - Caches release information for 6 hours to minimize API calls
+  - Properly handles version comparisons
+  - Seamless integration with WordPress update system
+
+### Changed
+- Added "Tested up to" header (WordPress 6.4)
+- Added "GitHub Plugin URI" header for compatibility
+- Added "Primary Branch" header specifying main branch
+- Enhanced plugin metadata for better update detection
+
+### Technical
+- New file: `includes/class-wcplt-github-updater.php` - Complete GitHub update functionality
+- Integrated updater initialization in main plugin class
+- Uses WordPress transient API for caching GitHub API responses
+- Leverages WordPress HTTP API for secure GitHub communication
+- Version bumped from 2.2.5 to 2.3.0
+
 ## [2.2.5] - 2025-12-04
 
 ### Added

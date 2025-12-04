@@ -3,16 +3,19 @@
  * Plugin Name: WC Product List Table
  * Plugin URI: https://github.com/webjive/WC-Product-List-Table
  * Description: Customize WooCommerce product displays with advanced cart button customization, styling, and redirect functionality for product list tables
- * Version: 2.2.5
+ * Version: 2.3.0
  * Author: WebJIVE
  * Author URI: https://web-jive.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wc-product-list-table
  * Requires at least: 5.0
+ * Tested up to: 6.4
  * Requires PHP: 7.2
  * WC requires at least: 3.0
  * WC tested up to: 9.0
+ * GitHub Plugin URI: webjive/WC-Product-List-Table
+ * Primary Branch: main
  */
 
 // Exit if accessed directly
@@ -21,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'WCPLT_VERSION', '2.2.5' );
+define( 'WCPLT_VERSION', '2.3.0' );
 define( 'WCPLT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCPLT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WCPLT_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -156,6 +159,9 @@ class WC_Product_List_Table {
 
         // Include shortcode handler
         require_once WCPLT_PLUGIN_DIR . 'includes/class-wcplt-shortcode.php';
+
+        // Include GitHub updater
+        require_once WCPLT_PLUGIN_DIR . 'includes/class-wcplt-github-updater.php';
     }
 
     /**
@@ -170,6 +176,9 @@ class WC_Product_List_Table {
 
         // Initialize shortcode
         WCPLT_Shortcode::get_instance();
+
+        // Initialize GitHub updater
+        new WCPLT_GitHub_Updater( __FILE__ );
     }
 
     /**
