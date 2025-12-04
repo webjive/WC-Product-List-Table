@@ -46,7 +46,8 @@ class WCPLT_Settings extends WC_Settings_Page {
      */
     public function get_sections() {
         return array(
-            ''          => __( 'Button Text', 'wc-product-list-table' ),
+            ''          => __( 'Layout & Display', 'wc-product-list-table' ),
+            'text'      => __( 'Button Text', 'wc-product-list-table' ),
             'redirect'  => __( 'Redirect Settings', 'wc-product-list-table' ),
             'styling'   => __( 'Button Styling', 'wc-product-list-table' ),
         );
@@ -56,13 +57,119 @@ class WCPLT_Settings extends WC_Settings_Page {
      * Get settings array
      */
     public function get_settings( $current_section = '' ) {
-        if ( 'redirect' === $current_section ) {
+        if ( 'text' === $current_section ) {
+            return $this->get_button_text_settings();
+        } elseif ( 'redirect' === $current_section ) {
             return $this->get_redirect_settings();
         } elseif ( 'styling' === $current_section ) {
             return $this->get_styling_settings();
         } else {
-            return $this->get_button_text_settings();
+            return $this->get_layout_settings();
         }
+    }
+
+    /**
+     * Get layout and display settings
+     */
+    private function get_layout_settings() {
+        return array(
+            array(
+                'title' => __( 'Product List Layout', 'wc-product-list-table' ),
+                'type'  => 'title',
+                'desc'  => __( 'Control how products are displayed in shop/archive pages', 'wc-product-list-table' ),
+                'id'    => 'wcplt_layout_settings',
+            ),
+            array(
+                'title'    => __( 'Enable Table Layout', 'wc-product-list-table' ),
+                'desc'     => __( 'Display products in a clean table/list format with improved spacing', 'wc-product-list-table' ),
+                'id'       => 'wcplt_enable_table_layout',
+                'default'  => 'no',
+                'type'     => 'checkbox',
+            ),
+            array(
+                'title'    => __( 'Hide Quantity Selector', 'wc-product-list-table' ),
+                'desc'     => __( 'Remove the quantity input field from product listings', 'wc-product-list-table' ),
+                'id'       => 'wcplt_hide_quantity',
+                'default'  => 'no',
+                'type'     => 'checkbox',
+            ),
+            array(
+                'title'    => __( 'Show Product Short Description', 'wc-product-list-table' ),
+                'desc'     => __( 'Display product short description in table layout', 'wc-product-list-table' ),
+                'id'       => 'wcplt_show_description',
+                'default'  => 'yes',
+                'type'     => 'checkbox',
+            ),
+            array(
+                'title'       => __( 'Description Character Limit', 'wc-product-list-table' ),
+                'desc'        => __( 'Maximum characters for description (0 = unlimited)', 'wc-product-list-table' ),
+                'id'          => 'wcplt_description_limit',
+                'default'     => '0',
+                'type'        => 'number',
+                'css'         => 'width: 100px;',
+                'custom_attributes' => array(
+                    'min'  => '0',
+                    'step' => '1',
+                ),
+            ),
+            array(
+                'type' => 'sectionend',
+                'id'   => 'wcplt_layout_settings',
+            ),
+            array(
+                'title' => __( 'Button Display Options', 'wc-product-list-table' ),
+                'type'  => 'title',
+                'desc'  => __( 'Customize Add to Cart button appearance and behavior', 'wc-product-list-table' ),
+                'id'    => 'wcplt_button_display',
+            ),
+            array(
+                'title'    => __( 'Button Icon', 'wc-product-list-table' ),
+                'desc'     => __( 'Show cart icon in Add to Cart button', 'wc-product-list-table' ),
+                'id'       => 'wcplt_button_icon',
+                'default'  => 'yes',
+                'type'     => 'checkbox',
+            ),
+            array(
+                'title'    => __( 'Button Width', 'wc-product-list-table' ),
+                'desc'     => __( 'Set button width style', 'wc-product-list-table' ),
+                'id'       => 'wcplt_button_width',
+                'default'  => 'auto',
+                'type'     => 'select',
+                'options'  => array(
+                    'auto'  => __( 'Auto (fit content)', 'wc-product-list-table' ),
+                    'full'  => __( 'Full width', 'wc-product-list-table' ),
+                    'fixed' => __( 'Fixed width (specify below)', 'wc-product-list-table' ),
+                ),
+            ),
+            array(
+                'title'       => __( 'Fixed Button Width', 'wc-product-list-table' ),
+                'desc'        => __( 'Width in pixels when using fixed width (e.g., 200)', 'wc-product-list-table' ),
+                'id'          => 'wcplt_button_fixed_width',
+                'default'     => '200',
+                'type'        => 'number',
+                'css'         => 'width: 100px;',
+                'custom_attributes' => array(
+                    'min'  => '50',
+                    'step' => '1',
+                ),
+            ),
+            array(
+                'title'    => __( 'Button Size', 'wc-product-list-table' ),
+                'desc'     => __( 'Choose button size', 'wc-product-list-table' ),
+                'id'       => 'wcplt_button_size',
+                'default'  => 'medium',
+                'type'     => 'select',
+                'options'  => array(
+                    'small'  => __( 'Small', 'wc-product-list-table' ),
+                    'medium' => __( 'Medium', 'wc-product-list-table' ),
+                    'large'  => __( 'Large', 'wc-product-list-table' ),
+                ),
+            ),
+            array(
+                'type' => 'sectionend',
+                'id'   => 'wcplt_button_display',
+            ),
+        );
     }
 
     /**

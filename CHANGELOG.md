@@ -5,6 +5,30 @@ All notable changes to WC Product List Table will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-12-04
+
+### Added
+- **Table Layout Mode**: New setting to display products in a clean table/list format with improved spacing and visual hierarchy
+- **Hide Quantity Selector**: Option to remove quantity input fields from product listings
+- **Description Display Control**: Toggle to show/hide product short descriptions with character limit option
+- **Button Icon Support**: Add shopping cart icon to "Add to Cart" buttons using WordPress Dashicons
+- **Button Width Options**: Choose between auto, full width, or fixed width button styles
+- **Button Size Control**: Select from small, medium, or large button sizes
+- **Enhanced Layout Options**: New "Layout & Display" settings tab for better organization
+- Product descriptions in table layout with character truncation support
+- Flexible button styling with multiple size and width configurations
+
+### Changed
+- Reorganized settings tabs: Added "Layout & Display" as primary tab
+- Improved settings organization with dedicated sections for different features
+- Enhanced CSS styling for table layout mode with card-based design
+- Updated button customization with more granular control options
+
+### Fixed
+- Improved table layout rendering with proper wrapper closures
+- Better responsive handling for table layout mode
+- Enhanced description trimming to prevent layout breaking
+
 ## [2.0.0] - 2025-12-04
 
 ### Changed

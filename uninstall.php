@@ -12,7 +12,16 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 // Delete plugin options
 $options = array(
-    // New option keys
+    // Layout & Display options
+    'wcplt_enable_table_layout',
+    'wcplt_hide_quantity',
+    'wcplt_show_description',
+    'wcplt_description_limit',
+    'wcplt_button_icon',
+    'wcplt_button_width',
+    'wcplt_button_fixed_width',
+    'wcplt_button_size',
+    // Button Text options
     'wcplt_enable_custom_text',
     'wcplt_shop_button_text',
     'wcplt_single_button_text',
@@ -20,11 +29,13 @@ $options = array(
     'wcplt_grouped_button_text',
     'wcplt_external_button_text',
     'wcplt_out_of_stock_text',
+    // Redirect options
     'wcplt_enable_redirect',
     'wcplt_redirect_simple',
     'wcplt_redirect_variable',
     'wcplt_redirect_grouped',
     'wcplt_redirect_new_tab',
+    // Styling options
     'wcplt_enable_styling',
     'wcplt_bg_color',
     'wcplt_text_color',
@@ -33,6 +44,7 @@ $options = array(
     'wcplt_border_radius',
     'wcplt_padding',
     'wcplt_custom_css',
+    // Migration flag
     'wcplt_migration_done',
     // Old option keys (for backward compatibility)
     'ccb_enable_custom_text',
