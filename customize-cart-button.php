@@ -75,10 +75,7 @@ class Customize_Cart_Button {
      * Include required files
      */
     private function includes() {
-        // Include admin settings
-        require_once CCB_PLUGIN_DIR . 'includes/class-ccb-settings.php';
-        
-        // Include button customizer
+        // Include button customizer (doesn't require WooCommerce classes)
         require_once CCB_PLUGIN_DIR . 'includes/class-ccb-button-customizer.php';
     }
     
@@ -97,6 +94,10 @@ class Customize_Cart_Button {
      * Add settings page to WooCommerce
      */
     public function add_settings_page( $settings ) {
+        // Include settings class here, after WooCommerce is loaded
+        if ( ! class_exists( 'CCB_Settings' ) ) {
+            require_once CCB_PLUGIN_DIR . 'includes/class-ccb-settings.php';
+        }
         $settings[] = CCB_Settings::get_instance();
         return $settings;
     }
