@@ -5,6 +5,18 @@ All notable changes to WC Product List Table will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.2] - 2025-12-04
+
+### Fixed
+- **WordPress 6.7+ Compatibility**: Fixed textdomain loading timing issue
+- Moved `load_plugin_textdomain()` from `plugins_loaded` to `init` action
+- Resolves "Translation loading was triggered too early" debug notice in WordPress 6.7+
+- Ensures compatibility with WordPress translation loading best practices
+
+### Technical
+- Created separate `load_textdomain()` method hooked to `init` action
+- Maintains backward compatibility with older WordPress versions
+
 ## [2.3.1] - 2025-12-04
 
 ### Fixed

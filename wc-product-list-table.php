@@ -3,7 +3,7 @@
  * Plugin Name: WC Product List Table
  * Plugin URI: https://github.com/webjive/WC-Product-List-Table
  * Description: Customize WooCommerce product displays with advanced cart button customization, styling, and redirect functionality for product list tables
- * Version: 2.3.1
+ * Version: 2.3.2
  * Author: WebJIVE
  * Author URI: https://web-jive.com
  * License: GPL v2 or later
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'WCPLT_VERSION', '2.3.1' );
+define( 'WCPLT_VERSION', '2.3.2' );
 define( 'WCPLT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCPLT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WCPLT_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
@@ -54,6 +54,7 @@ class WC_Product_List_Table {
      */
     private function __construct() {
         add_action( 'plugins_loaded', array( $this, 'init' ) );
+        add_action( 'init', array( $this, 'load_textdomain' ) );
 
         // Run migration on plugin activation
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
@@ -142,12 +143,16 @@ class WC_Product_List_Table {
             return;
         }
 
-        // Load text domain
-        load_plugin_textdomain( 'wc-product-list-table', false, dirname( WCPLT_PLUGIN_BASENAME ) . '/languages' );
-
         // Initialize features
         $this->includes();
         $this->init_hooks();
+    }
+
+    /**
+     * Load plugin text domain
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain( 'wc-product-list-table', false, dirname( WCPLT_PLUGIN_BASENAME ) . '/languages' );
     }
 
     /**
