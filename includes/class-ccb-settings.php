@@ -172,7 +172,8 @@ class CCB_Settings extends WC_Settings_Page {
             ),
             array(
                 'title'    => __( 'Redirect Grouped Products', 'customize-cart-button' ),
-                'desc'     => __( 'Enable redirect for grouped products', 'customize-cart-button' ),\n                'id'       => 'ccb_redirect_grouped',
+                'desc'     => __( 'Enable redirect for grouped products', 'customize-cart-button' ),
+                'id'       => 'ccb_redirect_grouped',
                 'default'  => 'yes',
                 'type'     => 'checkbox',
             ),
