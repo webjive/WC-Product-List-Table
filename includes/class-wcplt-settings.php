@@ -231,7 +231,7 @@ class WCPLT_Settings extends WC_Settings_Page {
                 'title'    => __( 'Enable Custom Text', 'wc-product-list-table' ),
                 'desc'     => __( 'Enable custom button text', 'wc-product-list-table' ),
                 'id'       => 'wcplt_enable_custom_text',
-                'default'  => 'no',
+                'default'  => 'yes',
                 'type'     => 'checkbox',
             ),
             array(
