@@ -44,6 +44,7 @@ class WCPLT_Button_Customizer {
         // Apply table layout if enabled
         if ( 'yes' === get_option( 'wcplt_enable_table_layout', 'no' ) ) {
             add_action( 'woocommerce_before_shop_loop_item', array( $this, 'table_layout_start' ), 1 );
+            add_action( 'woocommerce_after_shop_loop_item_title', array( $this, 'table_layout_middle' ), 15 );
             add_action( 'woocommerce_after_shop_loop_item', array( $this, 'table_layout_end' ), 100 );
         }
 
@@ -207,20 +208,15 @@ class WCPLT_Button_Customizer {
      * Start table layout wrapper
      */
     public function table_layout_start() {
-        global $product;
         echo '<div class="wcplt-table-row">';
         echo '<div class="wcplt-table-content">';
-        echo '<div class="wcplt-table-title-desc">';
     }
 
     /**
-     * End table layout wrapper
+     * Middle table layout - after title, add description and open actions
      */
-    public function table_layout_end() {
+    public function table_layout_middle() {
         global $product;
-
-        // Close title-desc wrapper
-        echo '</div>'; // .wcplt-table-title-desc
 
         // Add description if enabled
         if ( 'yes' === get_option( 'wcplt_show_description', 'yes' ) ) {
@@ -235,13 +231,16 @@ class WCPLT_Button_Customizer {
             }
         }
 
-        // Close content wrapper
+        // Close content wrapper and open actions wrapper
         echo '</div>'; // .wcplt-table-content
-
-        // Add price and button wrapper
         echo '<div class="wcplt-table-actions">';
+    }
 
-        // Note: WooCommerce will add price and button here, then we close in after_shop_loop_item
+    /**
+     * End table layout wrapper
+     */
+    public function table_layout_end() {
+        // Close actions and row wrappers (WooCommerce has already added price and button)
         echo '</div>'; // .wcplt-table-actions
         echo '</div>'; // .wcplt-table-row
     }
