@@ -5,6 +5,26 @@ All notable changes to WC Product List Table will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.5] - 2025-12-04
+
+### Added
+- **Typography Settings**: New typography customization section in Layout & Display tab
+- **Font Size Controls**: Separate font size settings for product titles, short descriptions, and prices
+  - Product Title Font Size - customize product title font size with any CSS unit (em, px, pt, etc.)
+  - Short Description Font Size - control description text size
+  - Price Font Size - adjust price display size
+  - All font size fields support leaving empty to use theme defaults
+- **Default Theme Font Option**: New "Use Default Theme Font" checkbox to inherit theme's font family instead of plugin styling
+
+### Fixed
+- **Button Text Fallback**: Variable, grouped, and external products now properly fall back to shop button text when product-type-specific text is not set
+- Fixed issue where variable products would show "Select Options" instead of custom button text when custom text was enabled but variable-specific text was empty
+- Grouped and external products now also fall back gracefully to shop button text
+
+### Changed
+- Improved button text customization logic with better fallback behavior
+- Enhanced typography control with granular font size options
+
 ## [2.2.4] - 2025-12-04
 
 ### Fixed

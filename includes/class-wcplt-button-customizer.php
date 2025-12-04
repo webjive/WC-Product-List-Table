@@ -95,12 +95,24 @@ class WCPLT_Button_Customizer {
                 break;
             case 'variable':
                 $custom_text = get_option( 'wcplt_variable_button_text', '' );
+                // If no specific variable text, fall back to shop button text
+                if ( empty( $custom_text ) ) {
+                    $custom_text = get_option( 'wcplt_shop_button_text', '' );
+                }
                 break;
             case 'grouped':
                 $custom_text = get_option( 'wcplt_grouped_button_text', '' );
+                // If no specific grouped text, fall back to shop button text
+                if ( empty( $custom_text ) ) {
+                    $custom_text = get_option( 'wcplt_shop_button_text', '' );
+                }
                 break;
             case 'external':
                 $custom_text = get_option( 'wcplt_external_button_text', '' );
+                // If no specific external text, fall back to shop button text
+                if ( empty( $custom_text ) ) {
+                    $custom_text = get_option( 'wcplt_shop_button_text', '' );
+                }
                 break;
             default:
                 $custom_text = get_option( 'wcplt_shop_button_text', '' );
@@ -287,6 +299,12 @@ class WCPLT_Button_Customizer {
         $button_fixed_width = get_option( 'wcplt_button_fixed_width', '200' );
         $button_size = get_option( 'wcplt_button_size', 'medium' );
 
+        // Get typography settings
+        $use_default_font = get_option( 'wcplt_use_default_font', 'yes' );
+        $title_font_size = get_option( 'wcplt_title_font_size', '' );
+        $short_desc_font_size = get_option( 'wcplt_short_desc_font_size', '' );
+        $price_font_size = get_option( 'wcplt_price_font_size', '' );
+
         // Get styling settings
         $bg_color = get_option( 'wcplt_bg_color', '#0073aa' );
         $text_color = get_option( 'wcplt_text_color', '#ffffff' );
@@ -339,7 +357,11 @@ class WCPLT_Button_Customizer {
             }
 
             .woocommerce ul.products li.product .woocommerce-loop-product__title {
+                <?php if ( ! empty( $title_font_size ) ) : ?>
+                font-size: <?php echo esc_attr( $title_font_size ); ?> !important;
+                <?php else : ?>
                 font-size: 1.2em !important;
+                <?php endif; ?>
                 margin: 0 !important;
                 padding: 0 !important;
                 color: #8b0000 !important;
@@ -347,7 +369,11 @@ class WCPLT_Button_Customizer {
 
             .wcplt-table-description {
                 color: #666 !important;
+                <?php if ( ! empty( $short_desc_font_size ) ) : ?>
+                font-size: <?php echo esc_attr( $short_desc_font_size ); ?> !important;
+                <?php else : ?>
                 font-size: 0.95em !important;
+                <?php endif; ?>
                 line-height: 1.5 !important;
                 margin: 0 !important;
             }
@@ -361,7 +387,11 @@ class WCPLT_Button_Customizer {
             }
 
             .woocommerce ul.products li.product .price {
+                <?php if ( ! empty( $price_font_size ) ) : ?>
+                font-size: <?php echo esc_attr( $price_font_size ); ?> !important;
+                <?php else : ?>
                 font-size: 1.5em !important;
+                <?php endif; ?>
                 font-weight: bold !important;
                 color: #333 !important;
                 margin: 0 !important;
@@ -369,6 +399,15 @@ class WCPLT_Button_Customizer {
 
             .woocommerce ul.products li.product .button {
                 margin: 0 !important;
+            }
+            <?php endif; ?>
+
+            /* Typography - Use Default Theme Font */
+            <?php if ( 'yes' === $use_default_font ) : ?>
+            .woocommerce ul.products li.product .woocommerce-loop-product__title,
+            .wcplt-table-description,
+            .woocommerce ul.products li.product .price {
+                font-family: inherit !important;
             }
             <?php endif; ?>
 
