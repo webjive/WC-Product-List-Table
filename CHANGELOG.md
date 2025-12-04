@@ -5,6 +5,17 @@ All notable changes to WC Product List Table will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2025-12-04
+
+### Fixed
+- **Hide Product Images in Table Layout**: Added CSS to automatically hide product featured images when table layout mode is enabled
+- Ensures clean card-based layout with only text content (title, description, price, button)
+- Matches the intended design with no large product images interfering with the layout
+
+### Changed
+- Improved table layout CSS to enforce image-free product cards
+- Better visual consistency in list view mode
+
 ## [2.2.0] - 2025-12-04
 
 ### Added

@@ -3,7 +3,7 @@
  * Plugin Name: WC Product List Table
  * Plugin URI: https://github.com/webjive/WC-Product-List-Table
  * Description: Customize WooCommerce product displays with advanced cart button customization, styling, and redirect functionality for product list tables
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author: WebJIVE
  * Author URI: https://web-jive.com
  * License: GPL v2 or later
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'WCPLT_VERSION', '2.2.0' );
+define( 'WCPLT_VERSION', '2.2.1' );
 define( 'WCPLT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCPLT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WCPLT_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );

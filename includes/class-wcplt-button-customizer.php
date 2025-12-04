@@ -283,6 +283,13 @@ class WCPLT_Button_Customizer {
                 box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
             }
 
+            /* Hide product images in table layout */
+            .woocommerce ul.products li.product img,
+            .woocommerce ul.products li.product .wp-post-image,
+            .woocommerce ul.products li.product a > img {
+                display: none !important;
+            }
+
             .wcplt-table-row {
                 display: flex !important;
                 align-items: flex-start !important;
